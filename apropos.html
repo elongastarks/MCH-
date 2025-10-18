@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>À propos</title>
+  <style>
+  body.dark-theme {
+  background-color: #121212;
+  color: #f5f5f5;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header, footer {
+  background-color: #1f1f1f;
+  color: #f5f5f5;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+
+nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  color: #f5f5f5;
+  text-decoration: none;
+}
+
+nav a.active {
+  color: orange;
+}
+
+nav.hidden {
+  display: none;
+}
+
+.apropos {
+  padding: 60px 5px;
+  background-color: #121212;
+  color: #fff;
+  max-width: 1000px;
+  margin: auto;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.intro-bloc {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.intro-texte {
+  flex: 3;
+  padding: 0;
+}
+
+.intro-photo {
+  flex: 5;
+  padding: 0;
+  max-width: 1000px;
+}
+
+.intro-photo img {
+  width: 100%;
+  padding: 0;
+  aspect-ratio: 9 / 12;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+.contenu-texte p,
+.contenu-texte ul {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.contenu-texte h3 {
+  margin-top: 30px;
+}
+
+.competences h2 {
+  color: orange;
+  margin-bottom: 1rem;
+}
+.skills {
+  display: flex;
+  width: 80%;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.skills div {
+  flex: 1;
+}
+
+.skills h2 {
+  margin-bottom: 0.5rem;
+  color: #ffa500;
+}
+
+.skills ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.skills li {
+  margin-bottom: 0.3rem;
+}
+
+footer {
+  flex-direction: column;
+  text-align: center;
+}
+
+footer p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+footer .socials {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+footer .socials img {
+  width: 24px;
+  height: 24px;
+}
+</style>
+</head>
+<body class="dark-theme">
+
+  <header>
+    <div class="logo">TonNom</div>
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+    <nav id="menu" class="hidden">
+      <a href="index.html">Accueil</a>
+      <a href="apropos.html" class="active">À propos</a>
+      <a href="projets.html">Projets</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+    <section class="apropos">
+  <div class="intro-bloc">
+    <div class="intro-texte">
+      <h2>À propos de moi</h2>
+      <p>Je suis un passionné de scénarisation et design visuel, avec un parcours hybride entre art narratif et technologies créatives.
+      </p>
+    </div>
+    <div class="intro-photo">
+      <img src="https://picsum.photos/1200/675" alt="Photo de profil">
+    </div>
+  </div>
+
+  <div class="contenu-texte">
+    <p>Mon domaine d’expertise couvre l’écriture scénaristique, la création visuelle et l’intégration numérique. Je crois en une narration authentique portée par des outils modernes.</p>
+    <p>Mes valeurs : responsabilité, créativité, précision. Je me distingue par une approche qui combine rigueur technique et sensibilité artistique.</p>
+    
+    <h3>Compétences</h3>
+    <ul>
+      <li><strong>Techniques :</strong> Final Draft, Adobe Suite, HTML/CSS</li>
+      <li><strong>Créatives :</strong> Écriture narrative, storyboard, design graphique</li>
+      <li><strong>Transversales :</strong> Gestion de projet, collaboration, éthique professionnelle</li>
+    </ul>
+  </div>
+</section>
+
+    <section class="competences">
+      <h2>Compétences</h2>
+      <div class="skills">
+        <div>
+          <h3>Techniques</h3>
+          <ul>
+            <li>Photoshop, Illustrator, Figma</li>
+            <li>HTML, CSS, JS</li>
+            <li>WordPress, Git</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Créatives</h3>
+          <ul>
+            <li>Photographie</li>
+            <li>Design graphique</li>
+            <li>Dessin digital</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Transversales</h3>
+          <ul>
+            <li>Gestion de projet</li>
+            <li>Communication visuelle</li>
+            <li>Travail en équipe</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© Créativité & Vision — Tous les visuels appartiennent à leur auteur</p>
+    <div class="socials">
+      <a href="#"><img src="icons/mail.svg" alt="email"/></a>
+      <a href="#"><img src="icons/whatsapp.svg" alt="whatsapp"/></a>
+      <a href="#"><img src="icons/facebook.svg" alt="facebook"/></a>
+      <a href="#"><img src="icons/instagram.svg" alt="instagram"/></a>
+    </div>
+  </footer>
+  
+  <script>
+    document.getElementById("menu-toggle").onclick = () => {
+      document.getElementById("menu").classList.toggle("hidden");
+    };
+  </script>
+</body>
+</html>

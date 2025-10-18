@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Mutheke</title>
+  <style>
+  .contact-info p a {
+  color: orange;
+  text-decoration: none;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  background: #1f1f1f;
+  border: 1px solid #333;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.contact-form button {
+  background: orange;
+  color: #121212;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+  </style>
+</head>
+<body class="dark-theme">
+
+  <header class="header">
+    <h1>Mutheke</h1>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <nav id="nav-menu" class="hidden">
+      <a href="index.html">Accueil</a>
+      <a href="apropos.html">À propos</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="parcours.html">Parcours</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2>Contact</h2>
+
+    <div class="contact-info">
+      <p>📧 Email : <a href="mailto:mutheke@email.com">mutheke@email.com</a></p>
+      <p>📱 Tél. : <a href="tel:+243840344307">+243 840 344 307</a></p>
+
+      <div class="socials">
+        <a href="https://wa.me/243815740845?text=Bonjour%20Mutheke">📱</a>
+[<a href="#">📘</a>
+        <a href="#">📸</a>
+        <a href="#">🔗</a>
+      </div>
+    </div>
+
+    <form class="contact-form" action="#" method="post">
+      <label>Nom :
+        <input type="text" name="nom" required>
+      </label>
+      <label>Email :
+        <input type="email" name="email" required>
+      </label>
+      <label>Message :
+        <textarea name="message" rows="5" required></textarea>
+      </label>
+      <button type="submit">Envoyer</button>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <div class="socials">
+      <a href="mailto:mutheke@email.com">📧</a>
+      <a href="https://wa.me/243815740845?text=Bonjour%20Mutheke">📱</a>
+      <a href="#">📸</a>
+      <a href="#">📘</a>
+    </div>
+    <p>© Mutheke – Cultiver la narration autrement</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('nav-menu').classList.toggle('hidden');
+    }
+  </script>
+</body>
+</html>
+

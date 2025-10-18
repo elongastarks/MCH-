@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nom</title>
+  <style>
+  body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #111;
+  color: #fff;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #000;
+  padding: 1rem 2rem;
+  position: relative;
+}
+
+.logo h1 {
+  margin: 0;
+  color: #fff;
+}
+
+.slogan {
+  margin: 0;
+  font-size: 0.9rem;
+  color: orange;
+}
+
+.hamburger {
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: white;
+}
+
+.nav {
+  position: absolute;
+  top: 60px;
+  right: 2rem;
+  background: #222;
+  border: 1px solid #333;
+  display: none;
+  flex-direction: column;
+}
+
+.nav.open {
+  display: flex;
+}
+
+.nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav li {
+  border-bottom: 1px solid #333;
+}
+
+.nav a {
+  display: block;
+  padding: 0.8rem 1.5rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  background: orange;
+  color: black;
+}
+
+.banner img {
+  width: 100%;
+  aspect-ratio: 9 / 5;
+  object-fit: cover;
+  display: block;
+}
+
+.hero {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  color: orange;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #ddd;
+}
+
+.historique-section {
+  background-color: #333844;
+  color: #ffffff;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.historique-section h2 {
+  margin-bottom: 15px;
+}
+
+.historique-section p {
+  line-height: 1.5;
+}
+
+.contact-email {
+  margin-top: 15px;
+  font-style: italic;
+  color: #ffa500; /* orange */
+}
+
+.footer {
+  background: #000;
+  padding: 1rem 0;
+  text-align: center;
+}
+.footer-links a {
+  margin: 0 10px;
+  display: inline-block;
+}
+
+.footer-links img {
+  width: 24px;
+  height: 24px;
+  filter: invert(1); /* Pour icônes sombres */
+  transition: transform 0.2s;
+}
+
+.footer-links img:hover {
+  transform: scale(1.2);
+  filter: invert(55%) sepia(83%) saturate(7482%) hue-rotate(1deg) brightness(99%) contrast(100%);
+}
+
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <h1>Nom Pro</h1>
+      <p class="slogan">Scénariste & Créateur d’histoires visuelles</p>
+    </div>
+    <div class="hamburger" id="hamburger">&#9776;</div>
+    <nav class="nav" id="nav">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="projets.html">Projets</a></li>
+        <li><a href="experiences.html">Expérience</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="hero">
+  <section class="banner">
+  <img src="https://picsum.photos/1200/675" alt="Bannière" />
+</section>
+
+    <h2>Bienvenue</h2>
+    <p>Découvrez mon univers, mes histoires et mes projets de narration visuelle.</p>
+    
+    <section class="historique-section">
+  <h2>Bref Historique</h2>
+  <p>Depuis 2010, nous accompagnons les professionnels du design graphique avec passion et expertise, alliant créativité et technologie pour des projets d’exception.</p>
+  <p class="contact-email">Contact : contact@exemple.com</p>
+</section>
+  </main>
+  
+  <footer class="footer">
+  <div class="footer-links">
+    <a href="mailto:exemple@email.com" title="Email">
+      <img src="icons/email.svg" alt="Email" />
+    </a>
+    <a href="https://wa.me/243815740845" title="WhatsApp" target="_blank">
+      <img src="icons/whatsapp.svg" alt="WhatsApp" />
+    </a>
+    <a href="https://facebook.com/tonprofil" title="Facebook" target="_blank">
+      <img src="icons/facebook.svg" alt="Facebook" />
+    </a>
+    <a href="https://instagram.com/tonprofil" title="Instagram" target="_blank">
+      <img src="icons/instagram.svg" alt="Instagram" />
+    </a>
+  </div>
+  
+  <p>© 2025 Scénario & créativité par MUTHEKE</p>
+  
+</footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('nav');
+    hamburger.addEventListener('click', () => {
+        nav.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
