@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio - Mutheke</title>
+  <style>
+  body {
+  background-color: #121212;
+  color: #fff;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #000;
+  padding: 1rem 2rem;
+  position: relative;
+}
+
+.logo h1 {
+  margin: 0;
+  color: #fff;
+}
+
+.slogan {
+  margin: 0;
+  font-size: 0.9rem;
+  color: orange;
+}
+
+.hamburger {
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: white;
+}
+
+.nav {
+  position: absolute;
+  top: 60px;
+  right: 2rem;
+  background: #222;
+  border: 1px solid #333;
+  display: none;
+  flex-direction: column;
+}
+
+.nav.open {
+  display: flex;
+}
+
+.nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav li {
+  border-bottom: 1px solid #333;
+}
+
+.nav a {
+  display: block;
+  padding: 0.8rem 1.5rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  background: orange;
+  color: black;
+}
+
+.portfolio {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.bloc-projet {
+  margin-bottom: 60px;
+}
+
+.img-projet {
+  float: right;
+  width: 300px;
+  height: 400px;
+  margin: 1px;
+  object-fit: cover;
+}
+
+.footer {
+  background-color: #1c1c1c;
+  text-align: center;
+  padding: 20px;
+}
+
+.footer a img {
+  width: 24px;
+  margin: 0 10px;
+  vertical-align: middle;
+}
+  </style>
+</head>
+<body>
+<header class="header">
+    <div class="logo">
+      <h1>Nom Pro</h1>
+      <p class="slogan">Scénariste & Créateur d’histoires visuelles</p>
+    </div>
+    <div class="hamburger" id="hamburger">&#9776;</div>
+    <nav class="nav" id="nav">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="parcours.html">Parcours</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="projets-container" class="portfolio">
+
+    <section class="bloc-projet">
+      <h2>Les Voix du Fleuve (2022)</h2>
+      <p>
+        <img src="https://picsum.photos/1200/675" alt="Projet 1" class="img-projet">
+        <strong>Objectif :</strong> Sensibiliser les communautés au patrimoine oral en RDC.<br><br>
+        <strong>Contexte :</strong> Réalisé en partenariat avec une ONG culturelle locale. Ce projet a été conçu pour une exposition itinérante.<br><br>
+        <strong>Rôle :</strong> Mutheke a assuré l’écriture du scénario, la direction artistique et la coordination terrain.<br><br>
+        <strong>Résultat :</strong> Projet sélectionné au Festival KinArt 2023, 3 000 visiteurs, retombées presse nationales.
+        </p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <a href="mailto:mutheke@email.com"><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="email"></a>
+    <a href="https://wa.me/243815740845?text=Bonjour%20Mutheke%2C%20je%20viens%20de%20voir%20votre%20portfolio"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp"></a>
+    <a href="https://facebook.com/mutheke"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
+    <a href="https://instagram.com/mutheke"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram"></a>
+    <p>© Portfolio créatif de Mutheke – Narration & Imagination</p>
+  </footer>
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('nav');
+    hamburger.addEventListener('click', () => {
+        nav.classList.toggle('open');
+    });
+  </script>
+  <script type="module" src="portfolio.js">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDh1MNL0RYp8Dk-UoDoqf0sSdS84AhRXHk",
+  authDomain: "said-mutheke.firebaseapp.com",
+  projectId: "said-mutheke",
+  storageBucket: "said-mutheke.appspot.com",
+  messagingSenderId: "378853548599",
+  appId: "1:378853548599:web:701a11d4f8a9cd6b1d95b2",
+  measurementId: "G-GDFYW6PTBD"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const container = document.getElementById("projets-container");
+
+async function loadProjets() {
+  const querySnapshot = await getDocs(collection(db, "portfolio"));
+  querySnapshot.forEach((doc) => {
+    const data = doc.data();
+
+    const section = document.createElement("section");
+    section.className = "bloc-projet";
+    section.innerHTML = `
+      <h2>${data.titre}</h2>
+      <p>
+        <img src="${data.img}" alt="${data.titre}" class="img-projet">
+        <strong>Pitch : </strong>${data.pitch}<br><br>
+        <strong>Synopsis : </strong> ${data.synopsis}<br><br>
+        <strong>Objectif : </strong>${data.objectif}<br><br>
+        <strong>Résultat : </strong> ${data.resultats}<br><br>${data.url ? `}<a href="${data.url}" target="_blank" style="color: orange;">Voir plus</a>` : ''}
+      </p>
+    `;
+    container.appendChild(section);
+  });
+}
+
+loadProjets();
+  </script>
+</body>
+</html>
