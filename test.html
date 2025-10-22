@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio – Mutheke</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #fff;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #000;
+      padding: 1rem 2rem;
+      position: relative;
+    }
+
+    .logo h1 {
+      margin: 0;
+      color: #fff;
+    }
+
+    .slogan {
+      margin: 0;
+      font-size: 0.9rem;
+      color: orange;
+    }
+
+    .hamburger {
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: white;
+    }
+
+    .nav {
+      position: absolute;
+      top: 60px;
+      right: 2rem;
+      background: #222;
+      border: 1px solid #333;
+      display: none;
+      flex-direction: column;
+    }
+
+    .nav.open {
+      display: flex;
+    }
+
+    .nav ul {
+        list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav li {
+      border-bottom: 1px solid #333;
+    }
+
+    .nav a {
+      display: block;
+      padding: 0.8rem 1.5rem;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .nav a:hover {
+      background: orange;
+      color: black;
+    }
+
+    .portfolio {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .bloc-projet {
+      margin-bottom: 60px;
+    }
+
+    .img-projet {
+      float: right;
+      width: 300px;
+      height: 400px;
+      margin: 1px;
+      object-fit: cover;
+    }
+
+    .bloc-projet:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="logo">
+      <h1>Mutheke</h1>
+      <p class="slogan">Portfolio</p>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <nav class="nav" id="nav">
+      <ul>
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#">Projets</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="portfolio" id="portfolio"></section>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("nav").classList.toggle("open");
+    }
+  </script>
+
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+    import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDh1MNL0RYp8Dk-UoDoqf0sSdS84AhRXHk",
+      authDomain: "said-mutheke.firebaseapp.com",
+      projectId: "said-mutheke",
+      storageBucket: "said-mutheke.appspot.com",
+      messagingSenderId: "378853548599",
+      appId: "1:378853548599:web:701a11d4f8a9cd6b1d95b2"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const portfolioSection = document.getElementById("portfolio");
+
+    async function loadProjects() {
+      const q = query(collection(db, "portfolio"), orderBy("date", "desc"));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach(doc => {
+        const data = doc.data();
+        const bloc = document.createElement("section");
+        bloc.className = "bloc-projet";
+        bloc.innerHTML = `
+          <h2>data.titre</h2>
+          <p>
+            <img src="{data.img}" alt="Image du projet" class="img-projet">
+            <strong>Pitch :</strong> data.pitch<br><br>
+            <strong>Synopsis :</strong>{data.synopsis}<br><br>
+            <strong>Objectif :</strong> data.objectif<br><br>
+            <strong>Résultats :</strong>{data.resultats}<br><br>
+            data.url ? `<strong>Lien :</strong> <a href="${data.url}" target="_blank" style="color: orange;">${data.url}</a>` : ""}
+          </p>
+        `;
+        portfolioSection.appendChild(bloc);
+      });
+    }
+
+    loadProjects();
+  </script>
+</body>
+</html>

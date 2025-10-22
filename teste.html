@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #fff;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .portfolio {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .bloc-projet {
+      margin-bottom: 60px;
+    }
+    .img-projet {
+      float: right;
+      width: 300px;
+      height: 400px;
+      margin-left: 20px;
+      object-fit: cover;
+    }
+    .bloc-projet:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+  </style>
+  </head>
+<body>
+  <h1 style="text-align:center;">Portfolio de Mutheke</h1>
+  <section class="portfolio" id="portfolio">Chargement...</section>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+    import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDh1MNL0RYp8Dk-UoDoqf0sSdS84AhRXHk",
+      authDomain: "said-mutheke.firebaseapp.com",
+      projectId: "said-mutheke",
+      storageBucket: "said-mutheke.appspot.com",
+      messagingSenderId: "378853548599",
+      appId: "1:378853548599:web:701a11d4f8a9cd6b1d95b2"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const portfolio = document.getElementById("portfolio");
+
+    async function afficherProjets() {
+      try {
+        const q = query(collection(db, "portfolio"), orderBy("date", "desc"));
+        const snapshot = await getDocs(q);
+        portfolio.innerHTML = "";
+        snapshot.forEach(doc => {
+          const p = doc.data();
+          const bloc = document.createElement("section");
+          bloc.className = "bloc-projet";
+          bloc.innerHTML = `
+            <h2>${p.titre}</h2>
+            <p>
+              <img src="{p.img}" class="img-projet" alt="image projet">
+              <strong>Pitch :</strong> p.pitch<br><br>
+              <strong>Synopsis :</strong>{p.synopsis}<br><br>
+              <strong>Objectif :</strong> p.objectif<br><br>
+              <strong>Résultats :</strong>{p.resultats}<br><br>
+              p.url ? `<a href="{p.url}" target="_blank" style="color:orange;">Lien externe</a>` : ""}
+            </p>
+          `;
+          portfolio.appendChild(bloc);
+        });
+      } catch (err) {
+        portfolio.innerHTML = "Erreur de chargement : " + err.message;
+        console.error(err);
+      }
+    }
+
+    afficherProjets();
+  </script>
+</body>
+</html>
