@@ -1,17 +1,3 @@
-Voici le code complet pour *`setMessages.html`* avec :
-
-- Authentification Firebase
-- Vérification UID dans la collection `set`
-- Affichage des messages
-- Bouton *Envoyer un email* (ouvre `mailto:`)
-- Bouton *Supprimer*
-- Redirection vers `404.html` si non autorisé
-
----
-
-✅ HTML
-
-```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -122,22 +108,3 @@ Voici le code complet pour *`setMessages.html`* avec :
   </script>
 </body>
 </html>
-```
-
-✅ Résumé sécurité :
-
-- Seuls les utilisateurs connectés peuvent voir la page.
-- On vérifie que leur `uid` est bien dans la collection `set` (champ ID = `setID`).
-- Si ce n’est pas le cas, redirection vers `404.html`.
-- Chaque message a :
-  - un bouton *Répondre* (ouvre mail),
-  - un bouton *Supprimer* (avec confirmation).
-
-Dis-moi si tu veux aussi afficher la date ou ajouter pagination.
-
-
-
-
-
-
-
