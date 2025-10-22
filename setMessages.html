@@ -82,11 +82,11 @@
         const div = document.createElement("div");
         div.className = "message";
         div.innerHTML = `
-          <h3>data.nom</h3>
+          <h3>${data.nom}</h3>
           <p><strong>Email :</strong>${data.email}</p>
-          <p>data.message</p>
+          <p>${data.message}</p>
           <div class="btns">
-            <button onclick="location.href='mailto:{data.email}'">Répondre</button>
+            <button onclick="location.href='mailto:${data.email}'">Répondre</button>
             <button onclick="deleteMessage('${docSnap.id}')">Supprimer</button
           </div>
         `;
