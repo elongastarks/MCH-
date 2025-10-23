@@ -93,22 +93,22 @@
     <h2>Ajouter ou Modifier un Projet</h2>
     <input type="hidden" id="docId" value="">
     <label>Titre :
-      <input type="text" id="titre" required>
+      <input type="text" maxLength="100" id="titre" required>
     </label>
     <label>URL image :
       <input type="text" id="img" required>
     </label>
     <label>Pitch :
-      <textarea id="pitch" rows="2" required></textarea>
+      <textarea id="pitch" maxLength="350" rows="2" required></textarea>
     </label>
     <label>Synopsis :
-      <textarea id="synopsis" rows="3" required></textarea>
+      <textarea id="synopsis" maxLength="600" rows="3" required></textarea>
     </label>
     <label>Objectif :
-      <textarea id="objectif" rows="2" required></textarea>
+      <textarea id="objectif" maxLength="150" rows="2" required></textarea>
     </label>
     <label>Résultats :
-      <textarea id="resultats" rows="2" required></textarea>
+      <textarea id="resultats" maxLength="100" rows="2" required></textarea>
     </label>
     <label>Lien (optionnel) :
       <input type="text" id="url">
