@@ -86,9 +86,9 @@
 
   <form id="form-projet">
   <input type="hidden" id="docId">
-    <input type="text" id="titre" placeholder="Titre" required>
-    <textarea id="synopsis" placeholder="Synopsis" required></textarea>
-    <input type="text" id="note" placeholder="Note (ex: Projet sensible)">
+    <input type="text" maxLength="100" id="titre" placeholder="Titre" required>
+    <textarea id="synopsis" maxLength="600" placeholder="Synopsis" required></textarea>
+    <input type="text" maxLength="150" id="note" placeholder="Note (ex: Projet sensible)">
     <button type="submit">Enregistrer</button>
     <button type="button" onclick="resetForm()">Annuler</button>
   </form>
