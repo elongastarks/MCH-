@@ -206,24 +206,3 @@ nav a {
 </script>
 </body>
 </html>
-
-
-Voici le JS pour charger dynamiquement les projets depuis Firestore :
-
-```html
-
-```
-
-⚠️ Assure-toi d’avoir dans ton HTML :
-
-```html
-<section class="bloc" id="liste-projets">
-  <h2>Mes projets</h2>
-</section>
-``` 
-
-Et que chaque doc dans `projects` contient bien :
-- `titre` (string)
-- `synopsis` (string)
-- `note` (string ou optionnel)
-- `date` (timestamp Firestore)
