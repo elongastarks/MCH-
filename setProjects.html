@@ -122,7 +122,12 @@
           <p>${data.synopsis}</p>
           <p><strong>Note:</strong> ${data.note || "–"}</p>
           <p><em>${data.date ? new Date(data.date.seconds * 1000).toLocaleDateString() : ""}</em></p>
-          <button onclick="modifier('${docSnap.id}', $̀{data.titre}\`, \`${data.synopsis},̀$̀{data.note || ''}\`)">Modifier</button>
+          <button 
+    class="modifier-btn" 
+    data-id="${docSnap.id}" 
+    data-titre="${encodeURIComponent(data.titre)}" 
+    data-synopsis="${encodeURIComponent(data.synopsis)}" 
+    data-note="${encodeURIComponent(data.note || "")}">Modifier </button>
           <button onclick="supprimer('${docSnap.id}')">Supprimer</button>
         `;
         liste.appendChild(div);
@@ -147,6 +152,18 @@
       }
       resetForm();
     });
+
+    document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("modifier-btn")) {
+    const btn = e.target;
+    const id = btn.dataset.id;
+    const titre = decodeURIComponent(btn.dataset.titre);
+    const synopsis = decodeURIComponent(btn.dataset.synopsis);
+    const note = decodeURIComponent(btn.dataset.note);
+
+    modifier(id, titre, synopsis, note);
+  }
+});
 
     window.modifier = (id, t, s, n) => {
       docId.value = id;
